@@ -5,11 +5,10 @@ Autonomous tabletop cleaning robot developed in an electronics project course. F
 
 ## Demo / Overview
 
-- **Goal:** cover/“sweep” a tabletop area while staying on the table and avoiding obstacles.
+- **Goal:** “sweep” a tabletop area while staying on the table and avoiding obstacles.
 - **Safety:** downward-facing sensors detect table edges; the robot backs off and re-orients.
 - **Navigation:** simple state-machine behavior with repeated passes across the table.
 
-> `![demo](images/demo.gif)`
 
 ---
 
@@ -49,10 +48,10 @@ Pin mappings are defined at the top of the `.ino` file.
 
 ---
 
-## Control & Logic (what the code does)
+## Control & Logic
 
 ### 1) Heading stabilization while driving
-Wheel encoder pulses are used to estimate relative wheel motion. A PI-style correction adjusts PWM to keep the robot moving straight when driving forward.
+Wheel encoder pulses are used to estimate relative wheel motion. A PI controller adjusts PWM to keep the robot moving straight when driving forward.
 
 ### 2) Edge detection and recovery
 Downward ultrasonic sensors measure distance to the table surface. When one sensor reads “no surface” (large distance), the robot:
@@ -63,10 +62,8 @@ Downward ultrasonic sensors measure distance to the table surface. When one sens
 
 ### 3) Obstacle detection + avoidance
 When the forward sensor detects an obstacle, the robot:
-- Rotates to scan obstacle geometry (left/right)
+- Rotates to scan obstacle geometry (left/right distance)
 - Executes a multi-step avoidance maneuver using a simple state machine
 
 ---
-
-## Repository Structure (suggested)
 
